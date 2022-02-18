@@ -10,6 +10,9 @@ jobs:
           - PGPORT=54320
           - PGHOST=localhost
           - PGDATABASE=test
+    steps:
+      - checkout
+
   build_test:
     docker:
       - image: cimg/python:3.10.1
