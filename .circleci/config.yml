@@ -9,6 +9,7 @@ jobs:
           command: |  # create whl and use pipenv to install dependencies
             python setup.py sdist bdist_wheel
             python -m pip install pytest
+            python -m pip install psycopg2
       - run:
           command: |  # Run test suite
             pipenv run pytest
