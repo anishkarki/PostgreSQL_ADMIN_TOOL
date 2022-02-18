@@ -3,7 +3,7 @@ import psycopg2
 import time
 
 def create_dummy_db():
-    time.sleep(30)
+    time.sleep(120)
     conn = psycopg2.connect("dbname='test' user='user' host='127.0.0.1' password='admin' port='54320'")
     cur = conn.cursor()
     cur.execute("create table public.historical_claim_responses (id integer, data jsonb, response jsonb);")
@@ -12,7 +12,6 @@ def create_dummy_db():
     conn.close()
 
 def test_queryexecuter():
-    time.sleep(30)
     a = rowcleaner.connect_execute()
     assert "PostgreSQL" in a.fetchall()[0][0]
 
