@@ -3,6 +3,11 @@ jobs:
   build_test:
     docker:
       - image: cimg/python:3.10.1
+
+      - image: swordfish1995/postgres-machinelearning:1.0.0
+        environment:
+          - PGPORT=54320
+          - PGHOST=localhost
     steps:
       - checkout  # checkout source code to working directory
       - run:
