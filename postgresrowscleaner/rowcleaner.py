@@ -6,6 +6,8 @@ from .confighandler import config_grabber
 current_path=os.path.dirname(os.path.abspath(__file__))
 configfile=os.path.join(current_path,'./database.ini')
 deletable_row_file = os.path.join(current_path,'./deletable_row_detail.ini')
+
+
 def change_config(config_file, section, option, value):
     try:
         config = ConfigParser()
@@ -17,10 +19,10 @@ def change_config(config_file, section, option, value):
     except Exception as e:
         print(e)
 
-def connect_execute(filename=configfile, section="postgresql"):
+def connect_execute(filename=configfile, section="postgresql",query="select version()"):
     try:
         conn, cur = connect(filename, section)
-        cur_out = query_executer("select version()",cur)
+        cur_out = query_executer(query,cur)
         return cur_out
     except Exception as e:
         print(e)
