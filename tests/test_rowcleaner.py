@@ -10,6 +10,13 @@ def create_dummy_db():
     conn.close()
 
 def test_queryexecuter():
+    conn = psycopg2.connect(database="test", user="user", password="admin", host="127.0.0.1")
+    cur = conn.cursor()
+    cur.execute("create table public.historical_claim_responses (id integer, data jsonb, response jsonb);")
+    cur.execute(
+        "insert into postgres.public.historical_claim_responses select i,('{\"firstName\":\"' ||  md5(random()::text) || '\", \"lastName\":\"' || md5(random()::text) ||'\",\"address\":\"'||md5(random()::text)||'\"}')::jsonb,('{\"firstName\":\"' ||  md5(random()::text) || '\", \"lastName\":\"' || md5(random()::text) || '\",\"address\":\"' || md5(random()::text)||'\"}')::jsonb from generate_series(1,10000) s(i);")
+    conn.commit()
+    conn.close()
     a = rowcleaner.connect_execute()
     assert "PostgreSQL" in a.fetchall()[0][0]
 
