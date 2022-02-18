@@ -1,9 +1,7 @@
 version: 2.1
 jobs:
-  build_test:
+  build_db:
     docker:
-      - image: cimg/python:3.10.1
-
       - image: postgres:latest
         environment:
           - POSTGRES_USER=user
@@ -11,6 +9,10 @@ jobs:
           - POSTGRES_DB=test
           - PGPORT=54320
           - PGHOST=localhost
+          - PGDATABASE=test
+  build_test:
+    docker:
+      - image: cimg/python:3.10.1
     steps:
       - checkout  # checkout source code to working directory
       - run:
@@ -26,4 +28,5 @@ jobs:
 workflows:
   build_test_publish:
     jobs:
+      - build_db
       - build_test
