@@ -14,6 +14,6 @@ def test_queryexecuter():
     assert "PostgreSQL" in a.fetchall()[0][0]
 
 def test_row_cleaner():
-    b=rowcleaner.row_cleaner(tablename="dvdrental.public.historical_claim_reponses")
+    b=rowcleaner.row_cleaner(tablename="historical_claim_reponses")
     assert "VACUUM" == b.statusmessage
 
