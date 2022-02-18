@@ -1,0 +1,11 @@
+README.md
+setup.py
+postgresrowscleaner/__init__.py
+postgresrowscleaner/confighandler.py
+postgresrowscleaner/queryexecuter.py
+postgresrowscleaner/rowcleaner.py
+row_cleaner.egg-info/PKG-INFO
+row_cleaner.egg-info/SOURCES.txt
+row_cleaner.egg-info/dependency_links.txt
+row_cleaner.egg-info/requires.txt
+row_cleaner.egg-info/top_level.txt
