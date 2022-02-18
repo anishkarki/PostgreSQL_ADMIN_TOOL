@@ -21,7 +21,7 @@ jobs:
             python -m pip install psycopg2
       - run:
           command: |  # Run test suit
-            python setup.py pytest -s
+            python setup.py pytest
 
 workflows:
   build_test_publish:
