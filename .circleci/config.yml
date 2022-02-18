@@ -22,8 +22,6 @@ jobs:
           command: |  # Run test suite
             pipenv run pytest -s
             python setup.py pytest
-            
-      
 
 workflows:
   build_test_publish:
