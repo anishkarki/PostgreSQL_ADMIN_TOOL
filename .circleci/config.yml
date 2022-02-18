@@ -20,8 +20,7 @@ jobs:
             python -m pip install pytest
             python -m pip install psycopg2
       - run:
-          command: |  # Run test suite
-            pipenv run pytest -s
+          command: |  # Run test suit
             python setup.py pytest -s
 
 workflows:
