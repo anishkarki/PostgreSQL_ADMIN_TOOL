@@ -2,7 +2,7 @@ from postgresrowscleaner import rowcleaner
 import psycopg2
 
 def create_dummy_db():
-    conn = psycopg2.connect(database="postgres", user="user", password="admin",host="localhost")
+    conn = psycopg2.connect(database="test", user="user", password="admin",host="localhost")
     cur = conn.cursor()
     cur.execute("create table public.historical_claim_responses (id integer, data jsonb, response jsonb);")
     cur.execute("insert into postgres.public.historical_claim_responses select i,('{\"firstName\":\"' ||  md5(random()::text) || '\", \"lastName\":\"' || md5(random()::text) ||'\",\"address\":\"'||md5(random()::text)||'\"}')::jsonb,('{\"firstName\":\"' ||  md5(random()::text) || '\", \"lastName\":\"' || md5(random()::text) || '\",\"address\":\"' || md5(random()::text)||'\"}')::jsonb from generate_series(1,10000) s(i);")

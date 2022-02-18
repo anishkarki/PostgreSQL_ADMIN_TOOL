@@ -4,8 +4,11 @@ jobs:
     docker:
       - image: cimg/python:3.10.1
 
-      - image: swordfish1995/postgres-machinelearning:1.0.0
+      - image: cimg/postgres:12.0
         environment:
+          - POSTGRES_USER=user
+          - POSTGRES_PASSWORD=admin
+          - POSTGRES_DB=test
           - PGPORT=54320
           - PGHOST=localhost
     steps:
@@ -17,7 +20,7 @@ jobs:
             python -m pip install psycopg2
       - run:
           command: |  # Run test suite
-            pipenv run pytest
+            pipenv run pytest -s
             python setup.py pytest
             
       
